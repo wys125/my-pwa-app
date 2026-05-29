@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/xiaomian/icon-advanced.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="xiaomian" />
+    <link rel="apple-touch-icon" href="/xiaomian/icon-512.png" />
+    <link rel="manifest" href="/xiaomian/manifest.json" />
+    <title>小眠 - 温柔的睡眠伙伴</title>
+    <script type="module" crossorigin src="/xiaomian/assets/index-BH6dMX99.js"></script>
+    <link rel="stylesheet" crossorigin href="/xiaomian/assets/index-B2eS-xCi.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/xiaomian/service-worker.js')
+            .then((registration) => {
+              console.log('SW 注册成功:', registration.scope);
+              registration.addEventListener('updatefound', () => {
+                const newWorker = registration.installing;
+                newWorker.addEventListener('statechange', () => {
+                  if (newWorker.state === 'activated') {
+                    if (navigator.serviceWorker.controller) {
+                      console.log('[SW] 新版本已就绪，刷新页面即可更新');
+                    }
+                  }
+                });
+              });
+            })
+            .catch((error) => console.log('SW 注册失败:', error));
+        });
+
+        let refreshing = false;
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          if (!refreshing) {
+            refreshing = true;
+            window.location.reload();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
