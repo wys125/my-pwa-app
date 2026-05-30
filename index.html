@@ -13,6 +13,7 @@
     <title>小眠 - 温柔的睡眠伙伴</title>
     <script type="module" crossorigin src="/xiaomian/assets/index-BH6dMX99.js"></script>
     <link rel="stylesheet" crossorigin href="/xiaomian/assets/index-B2eS-xCi.css">
+    <link rel="manifest" href="./manifest.json">
   </head>
   <body>
     <div id="root"></div>
@@ -45,5 +46,10 @@
         });
       }
     </script>
-  </body>
+
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./service-worker.js');
+  }
+</script></body>
 </html>
