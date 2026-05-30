@@ -1,17 +1,23 @@
+/**
+ * 小眠 PWA - Service Worker
+ * 适配 GitHub Pages 路径：/xiaomian/
+ */
+
 const CACHE_NAME = 'xiaomian-v3';
+const BASE = '/xiaomian';
 
 const PRECACHE_URLS = [
-  './',
-  './index.html',
-  './manifest.json',
-  './service-worker.js',
-  './splash.html',
-  './icon-192.png',
-  './icon-512.png',
-  './icon-advanced.svg',
-  './icon.svg',
-  './assets/index-B2eS-xCi.css',
-  './assets/index-BH6dMX99.js'
+  BASE + '/',
+  BASE + '/index.html',
+  BASE + '/manifest.json',
+  BASE + '/service-worker.js',
+  BASE + '/splash.html',
+  BASE + '/icon-192.png',
+  BASE + '/icon-512.png',
+  BASE + '/icon-advanced.svg',
+  BASE + '/icon.svg',
+  BASE + '/assets/index-B2eS-xCi.css',
+  BASE + '/assets/index-BH6dMX99.js'
 ];
 
 self.addEventListener('install', (event) => {
@@ -37,14 +43,14 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   if (request.method !== 'GET') return;
-
+  
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
 
   event.respondWith(
     caches.match(request).then((cachedResponse) => {
       if (cachedResponse) return cachedResponse;
-
+      
       return fetch(request)
         .then((networkResponse) => {
           if (!networkResponse || networkResponse.status !== 200) {
@@ -58,7 +64,7 @@ self.addEventListener('fetch', (event) => {
         })
         .catch(() => {
           if (request.mode === 'navigate') {
-            return caches.match('./index.html');
+            return caches.match(BASE + '/index.html');
           }
           return new Response('', { status: 408, statusText: '离线状态' });
         });
