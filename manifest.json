@@ -1,33 +1,61 @@
 {
+  "id": "xiaomian-pwa",
   "name": "xiaomian",
   "short_name": "xiaomian",
   "description": "温柔的睡眠伙伴，陪伴你安然入睡",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
+  "display_override": ["standalone", "window-controls-overlay"],
   "orientation": "portrait",
   "theme_color": "#000000",
   "background_color": "#ffffff",
   "lang": "zh-CN",
+  "dir": "ltr",
   "categories": ["health", "lifestyle"],
   "icons": [
     {
       "src": "./icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "./icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "./icon-advanced.svg",
       "sizes": "512x512",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "./screenshot1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "小眠宽屏界面"
+    },
+    {
+      "src": "./screenshot2.png",
+      "sizes": "720x1280",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "小眠手机界面"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "开始聊天",
+      "short_name": "聊天",
+      "description": "快速进入聊天界面",
+      "url": "./",
+      "icons": [{ "src": "./icon-192.png", "sizes": "192x192" }]
     }
   ]
 }
