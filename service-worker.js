@@ -1,7 +1,3 @@
-/**
- * 小眠 PWA - Service Worker
- */
-
 const CACHE_NAME = 'xiaomian-v3';
 
 const PRECACHE_URLS = [
