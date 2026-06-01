@@ -10,6 +10,8 @@ const PRECACHE_URLS = [
   './icon-512.png',
   './icon-advanced.svg',
   './icon.svg',
+  './screenshot-wide.png',
+  './screenshot-narrow.png',
   './assets/index-B2eS-xCi.css',
   './assets/index-BH6dMX99.js'
 ];
